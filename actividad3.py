@@ -5,3 +5,4 @@ print(a//7)   #division entera
 print(a%7)    #residuo
 print(a**7)   #potencia
 print(a+3*4)  #procedencia de operadores
+print("ingrese")
