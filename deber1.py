@@ -37,3 +37,4 @@ print("""ingrese un valor a operar:
       4 para dividir""")
 valor = int(input("Ingrese el valor: "))
 operaciones(valor)# Llamada a la función y muestra del resultado
+print("final")
