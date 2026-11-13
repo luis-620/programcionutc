@@ -38,3 +38,5 @@ print("""ingrese un valor a operar:
 valor = int(input("Ingrese el valor: "))
 operaciones(valor)# Llamada a la función y muestra del resultado
 print("final")
+print("luis yugsi creador")
+
