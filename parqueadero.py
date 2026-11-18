@@ -65,7 +65,7 @@ while True:
                 # Informamos que la salida fue correcta
                 print("Salida realizada correctamente.")
                 print("Espacios disponibles:", capacidad - total)
-
+                 #resta los vehículos ocupados a la capacidad total.
             else:
 
                 # Avisamos que el parqueadero esta vacio
