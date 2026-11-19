@@ -1,87 +1,50 @@
 
-# Universidad Tecnica de Cotopaxi
-# Nombre: Luis Yugsi
-# Tema: Control de entrada y salida de vehiculos
+# Autor: Luis Yugsi
+# Fecha: 10/11/2026
+# Tema: Estacionamiento
 
-# Guardamos la capacidad maxima del parqueadero
-capacidad = 50
+disponibles = 50  # Se establece que el estacionamiento tiene 50 espacios disponibles.
 
-# Contamos los vehiculos que estan estacionados
-total = 0
+while True:  # Permite repetir el menú hasta que el usuario decida salir.
 
-# Repetimos el menu hasta que el usuario decida salir
-while True:
+    print("Bienvenido al estacionamiento")  # Muestra el mensaje de bienvenida.
+    print("1. Consultar espacios disponibles")  # Opción para consultar los espacios.
+    print("2. Ingresar vehículo")  # Opción para ingresar un vehículo.
+    print("3. Retirar vehículo")  # Opción para retirar un vehículo.
+    print("4. Salir")  # Opción para terminar el programa.
 
-    # Mostramos las opciones del sistema
-    print("===== PARQUEADERO UTC =====")
-    print("1. Ingresar vehiculo")
-    print("2. Consultar vehiculos")
-    print("3. Sacar vehiculo")
-    print("4. Terminar")
+    opcion = int(input("Seleccione una opción: "))  # Solicita al usuario una opción.
 
-    # Pedimos que el usuario elija una opcion
-    opcion = int(input("Elija una opcion: "))
+    match opcion:  # Comprueba qué opción seleccionó el usuario.
 
-    # Revisamos la opcion seleccionada
-    match opcion:
+        case 1:  # Si selecciona la opción 1.
+            print(f"""******************************
+            Espacios disponibles: {disponibles}
+            *******************************""")  # Muestra los espacios libres.
 
-        # Opcion 1: Ingresar un vehiculo
-        case 1:
+        case 2:  # Si selecciona la opción 2.
+            if disponibles > 0:  # Comprueba si todavía hay espacios libres.
+                disponibles -= 1  # Resta un espacio porque ingresó un vehículo.
+                print(f"""******************************
+                Vehículo ingresado. Espacios disponibles: {disponibles}
+                *******************************""")  # Muestra los espacios restantes.
 
-            # Verificamos si hay espacio disponible
-            if total < capacidad:
+            else:  # Si ya no existen espacios disponibles.
+                print("Estacionamiento lleno.")  # Informa que no puede ingresar otro vehículo.
 
-                # Sumamos un vehiculo al parqueadero
-                total += 1
+        case 3:  # Si selecciona la opción 3.
+            if disponibles < 50:  # Comprueba si hay vehículos dentro.
+                disponibles += 1  # Suma un espacio porque salió un vehículo.
+                print(f"""******************************
+                Vehículo retirado. Espacios disponibles: {disponibles}
+                *******************************""")  # Muestra los espacios disponibles.
 
-                # Mostramos el resultado del ingreso
-                print("Ingreso realizado correctamente.")
-                print("Vehiculos estacionados:", total)
+            else:  # Si todos los espacios están libres.
+                print("No hay vehículos para retirar.")  # Informa que no hay vehículos.
 
-            else:
+        case 4:  # Si selecciona la opción 4.
+            print("Gracias por usar el estacionamiento.")  # Muestra el mensaje de despedida.
+            break  # Finaliza el ciclo y termina el programa.
 
-                # Avisamos que el parqueadero esta lleno
-                print("No hay espacio disponible.")
-
-        # Opcion 2: Consultar el parqueadero
-        case 2:
-
-            # Calculamos los espacios que quedan libres
-            espacios = capacidad - total
-
-            # Mostramos la informacion actual
-            print("Vehiculos estacionados:", total)
-            print("Espacios disponibles:", espacios)
-
-        # Opcion 3: Retirar un vehiculo
-        case 3:
-
-            # Comprobamos que exista algun vehiculo
-            if total > 0:
-
-                # Restamos un vehiculo del contador
-                total -= 1
-
-                # Informamos que la salida fue correcta
-                print("Salida realizada correctamente.")
-                print("Espacios disponibles:", capacidad - total)
-                 #resta los vehículos ocupados a la capacidad total.
-            else:
-
-                # Avisamos que el parqueadero esta vacio
-                print("No hay vehiculos para retirar.")
-
-        # Opcion 4: Finalizar el programa
-        case 4:
-
-            # Mostramos un mensaje de despedida
-            print("Gracias por utilizar el parqueadero UTC.")
-
-            # Detenemos el ciclo
-            break
-
-        # Si el usuario escribe una opcion incorrecta
-        case _:
-
-            # Mostramos un mensaje de error
-            print("Opcion incorrecta. Intente nuevamente.")
+        case _:  # Si selecciona una opción que no existe.
+            print("Opción no válida. Intente nuevamente.")  # Muestra un mensaje de error.
